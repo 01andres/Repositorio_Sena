@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Reserva de Servicios</title>
+    <!-- Incluye el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #495057;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .servicio-card {
+            margin-bottom: 20px;
+        }
+
+        .servicio-img {
+            max-height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="containerlogo  mt-2  ">
+        <div class="d-flex flex-row align-items-center ">
+            <div class=" col-lg-1">
+              </div>
+          <div class=" col-lg-4">
+            <img src="/claseSena/multimedia/Imagen_de_WhatsApp_2023-05-16_a_las_22.24.01-removebg-preview.png" class="" height="400 px " width="400 px"  alt="...">
+          </div>
+          <div class=" col-lg-2  ">
+            <img src="/claseSena/multimedia/veterinario.png"  class="img-fluid " height="150 px " width="150 px"  alt="logo1">
+          </div>
+          <div class="col -lg-2">
+            <img src="/claseSena/multimedia/peluqueria 2.png" class="img-fluid "  height="150 px " width="150 px" alt="logo2">
+          </div>
+          <div class="col -lg-2">
+            <img src="/claseSena/multimedia/paseo canino.png" class="img-fluid "  height="150 px " width="150 px"alt="logo3">
+          </div>
+        </div>
+    </div>
+<div class="container">
+    <h2 class="mb-4">Reserva de Servicios</h2>
+
+    <div class="row">
+        <!-- Servicio 1 -->
+        <div class="col-md-4"  >
+            <div class="card servicio-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">medicina Veterinaria</h5>
+                    <button class="btn btn-primary btn-block servicio-btn" onclick="seleccionarServicio('medicina Veterinaria')">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="col-md-4 ">
+            <div class="card servicio-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">peluqueria canina</h5>
+                    <button class="btn btn-primary btn-block servicio-btn" onclick="seleccionarServicio('peluqueria canina')">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="col-md-4">
+            <div class="card servicio-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Paseo canino</h5>
+                    <button class="btn btn-primary btn-block servicio-btn" onclick="seleccionarServicio('paseo canino')">Seleccionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Selección de Fecha y Hora -->
+    <form class="mt-4">
+        <div class="form-group">
+            <label for="fecha">Selecciona la Fecha:</label>
+            <input type="date" class="form-control" id="fecha">
+        </div>
+        <div class="form-group">
+            <label for="hora">Selecciona la Hora:</label>
+            <input type="time" class="form-control" id="hora">
+        </div>
+
+        <!-- Botón para mostrar el mensaje -->
+        <button type="button" class="btn btn-success" onclick="mostrarMensaje()">Reservar Cita</button>
+    </form>
+
+    <!-- Mensaje de Confirmación (Inicialmente oculto) -->
+    <div id="mensajeConfirmacion" class="mt-4" style="display: none;">
+        <div class="alert alert-success" role="alert">
+            <strong>Reserva Exitosa!</strong> Has seleccionado el servicio <span id="servicioSeleccionado"></span>,
+            para el día <span id="fechaSeleccionada"></span> a las <span id="horaSeleccionada"></span>. <br/>
+            <a href="/claseSena/index.html" class="btn btn-primary btn "> regresar al inicio </a>
+        </div>
+       
+
+    </div>
+</div>
+
+<!-- Incluye el enlace a Bootstrap JS y Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    var servicioSeleccionado = "";
+
+    function seleccionarServicio(servicio) {
+        servicioSeleccionado = servicio;
+        alert("Has seleccionado el servicio: " + servicioSeleccionado);
+    }
+
+    function mostrarMensaje() {
+        var fechaSeleccionada = document.getElementById("fecha").value;
+        var horaSeleccionada = document.getElementById("hora").value;
+
+        if (servicioSeleccionado && fechaSeleccionada && horaSeleccionada) {
+            // Mostrar el mensaje de confirmación
+            document.getElementById("mensajeConfirmacion").style.display = "block";
+
+            // Actualizar el contenido del mensaje con los datos seleccionados
+            document.getElementById("servicioSeleccionado").innerText = servicioSeleccionado;
+            document.getElementById("fechaSeleccionada").innerText = fechaSeleccionada;
+            document.getElementById("horaSeleccionada").innerText = horaSeleccionada;
+        } else  {
+            alert("Por favor, selecciona un servicio antes de reservar la cita.");
+        }
+    }
+</script>
+</body>
+</html>
